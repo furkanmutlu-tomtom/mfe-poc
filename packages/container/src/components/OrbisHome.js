@@ -1,9 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -58,12 +54,13 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
+    position: 'fixed',
+    bottom: 0,
+    width: '100%'
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-export default function Album() {
+export default function Home({ isSignedIn }) {
   const classes = useStyles();
 
   return (
@@ -79,7 +76,7 @@ export default function Album() {
               color="textPrimary"
               gutterBottom
             >
-              Orbis Platform
+              App Platform
             </Typography>
             <Typography
               variant="h5"
@@ -87,64 +84,33 @@ export default function Album() {
               color="textSecondary"
               paragraph
             >
-              Lorem ipsum dolor sit amet. Sed dolorem autem aut accusantium alias qui minus voluptates. Eum dignissimos atque qui eaque soluta ut galisum harum. At perspiciatis placeat ex blanditiis ipsum sit quidem internos et nesciunt sunt in praesentium sequi. Et explicabo magni est minima neque non reiciendis aliquid aut modi minima et rerum temporibus.
+              Lorem ipsum dolor sit amet. Sed dolorem autem aut accusantium alias qui minus voluptates. Eum dignissimos atque qui eaque soluta ut galisum harum.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Link to="/pricing">
-                    <Button variant="contained" color="primary">
-                      Pricing
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link to="/pricing">
+                  <Link to="/mfe1">
                     <Button variant="outlined" color="primary">
-                      Pricing
+                      MFE React
                     </Button>
                   </Link>
                 </Grid>
+                {isSignedIn && <Grid item>
+                  <Link to="/mfe2">
+                    <Button variant="outlined" color="primary">
+                      MFE Vue
+                    </Button>
+                  </Link>
+                </Grid>}
               </Grid>
             </div>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content!
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+      
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
+        <hr />
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>

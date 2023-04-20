@@ -8,10 +8,12 @@ import { createBrowserHistory } from 'history';
 
 import Progress from './components/Progress';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
-const MarketingLazy = lazy(() => import('./components/MarketingApp'));
+const OrbisHomeLazy = lazy(() => import('./components/OrbisHome'));
 const AuthLazy = lazy(() => import('./components/AuthApp'));
 const DashboardLazy = lazy(() => import('./components/DashboardApp'));
+const ReactAppLanding = lazy(() => import('./components/ReactAppLanding'));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'co',
@@ -41,13 +43,19 @@ export default () => {
               <Route path="/auth">
                 <AuthLazy onSignIn={() => setIsSignedIn(true)} />
               </Route>
-              <Route path="/dashboard">
+              <Route path="/mfe2">
                 {!isSignedIn && <Redirect to="/" />}
                 <DashboardLazy />
               </Route>
-              <Route path="/" component={MarketingLazy} />
+              <Route path="/mfe1">
+                <ReactAppLanding />
+              </Route>
+              <Route path="/">
+                <OrbisHomeLazy isSignedIn={isSignedIn} />
+              </Route>
             </Switch>
           </Suspense>
+          <Footer />
         </div>
       </StylesProvider>
     </Router>
