@@ -1,0 +1,40 @@
+{
+    "page": "ODP",
+    "title": "ODP - Data Display",
+    "layout": [
+        {
+            "type": "container",
+            "styles": {
+                "textAlign": "center",
+                "fontSize": "20px",
+                "border": "3px solid black",
+                "padding": "15px",
+                "grid": {
+                    "xs": "6"
+                }
+            },
+            "children": [
+                {
+                    "type": "table",
+                    "variant": "primary",
+                    "data": {
+                        "rows": "MODEL('tableData.rows')"
+                    },
+                    "styles": {
+                        "table": {},
+                        "th": {},
+                        "td": {}
+                    }
+                }
+            ]
+        }
+    ],
+    "models": [
+        {
+            "tableData": "FETCH('https://')",
+            "properties": {
+                "rows": "$this.rows"
+            }
+        }
+    ]
+}
