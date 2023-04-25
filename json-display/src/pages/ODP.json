@@ -4,37 +4,58 @@
     "layout": [
         {
             "type": "container",
-            "styles": {
-                "textAlign": "center",
-                "fontSize": "20px",
-                "border": "3px solid black",
-                "padding": "15px",
-                "grid": {
-                    "xs": "6"
-                }
+            "grid": {
+                "xs": "6"
             },
             "children": [
                 {
                     "type": "table",
-                    "variant": "primary",
                     "data": {
-                        "rows": "MODEL('tableData.rows')"
-                    },
-                    "styles": {
-                        "table": {},
-                        "th": {},
-                        "td": {}
+                        "scheme": {
+                            "name": "Name",
+                            "surname": "Surname"
+                        },
+                        "rows": {
+                            "api": {
+                                "method": "GET",
+                                "url": "https://"
+                            }
+                        }
                     }
                 }
             ]
-        }
-    ],
-    "models": [
+        },
         {
-            "tableData": "FETCH('https://')",
-            "properties": {
-                "rows": "$this.rows"
-            }
+            "type": "container",
+            "grid": {
+                "xs": "6"
+            },
+            "children": [
+                {
+                    "type": "form",
+                    "fields": [
+                        {
+                            "type": "input",
+                            "variant": "text",
+                            "label": "Name"
+                        },
+                        {
+                            "type": "input",
+                            "variant": "number",
+                            "label": "surname"
+                        }
+                    ],
+                    "data": {
+                        "title": "FORM with name and surname",
+                        "submit": {
+                            "api": {
+                                "method": "POST",
+                                "url": "https://"
+                            }
+                        }
+                    }
+                }
+            ]
         }
     ]
 }
