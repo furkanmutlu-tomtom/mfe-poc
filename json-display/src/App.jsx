@@ -13,12 +13,11 @@ function App() {
 
   return (
     <div className="App">
-      <div>NAVBAR</div>
+      <div style={{ border: '3px solid black', top: 0, left: 0, right: 0, fontSize: 30 }}>NAVBAR</div>
 
       {/* OMC Container */}
       {Component(type, { ...props })}
 
-      <div>FOOTER</div>
     </div>
   );
 }

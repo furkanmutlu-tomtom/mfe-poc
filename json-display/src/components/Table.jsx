@@ -1,37 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Table = () => {
+const Table = ({ data }) => {
+  const { scheme, rows } = data;
+  const [rowsData, setRowsData] = useState([]);
+
+  useEffect(() => {
+    fetch(rows.api.url)
+      .then(res => res.json())
+      .then(data => {
+        data.forEach((obj) => {
+          const newData = {};
+
+          for (const key of Object.keys(scheme)) {
+            console.log(data);
+            newData[key] = obj[key];
+          }
+
+          setRowsData((prevData) => [...prevData, newData]);
+        });
+      });
+  }, []);
+
   return (
-    <table className="table">
+    <>
+      <br></br>
+      <table className="table" style={{ margin: 28 }}>
         <thead>
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+              {Object.values(scheme).map((value, idx) => {
+                return <th key={idx} scope='col'>{value}</th>
+              })}
             </tr>
         </thead>
         <tbody>
+            {rowsData.map((rowData, idx) => {
+              return <tr key={idx}>
+                {Object.keys(rowData).map((d, idx) => {
+                  return <td key={idx}>{rowData[d]}</td>
+                })}
+              </tr>
+            })}
             <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+              
             </tr>
         </tbody>
-        </table>
+      </table>
+    </>
   )
 }
 

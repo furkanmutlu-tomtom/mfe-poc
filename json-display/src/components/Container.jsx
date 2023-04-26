@@ -1,13 +1,12 @@
 import React from 'react'
 import Component from '.';
 
-const Container = ({ styles, children }) => {
+const Container = ({ data, children }) => {
   return (
-    <div style={styles}>
-        Container
+    <div>
         <br />
         {children.map((child, index) => {
-            const { type, props } = child;
+            const { type, ...props } = child;
             return Component(type, {key: index, ...props})
         })}
     </div>

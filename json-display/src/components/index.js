@@ -3,7 +3,7 @@ import Container from './Container.jsx';
 import Table from './Table.jsx';
 
 const Components = {
-    container: Container,
+    grid: Container,
     table: Table,
 };
 

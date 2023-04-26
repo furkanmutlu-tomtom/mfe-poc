@@ -13,12 +13,12 @@
                     "data": {
                         "scheme": {
                             "name": "Name",
-                            "surname": "Surname"
+                            "email": "Email"
                         },
                         "rows": {
                             "api": {
                                 "method": "GET",
-                                "url": "https://"
+                                "url": "https://jsonplaceholder.typicode.com/posts/1/comments"
                             }
                         }
                     }
