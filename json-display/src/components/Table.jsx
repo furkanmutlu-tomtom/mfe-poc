@@ -12,7 +12,6 @@ const Table = ({ data }) => {
           const newData = {};
 
           for (const key of Object.keys(scheme)) {
-            console.log(data);
             newData[key] = obj[key];
           }
 
